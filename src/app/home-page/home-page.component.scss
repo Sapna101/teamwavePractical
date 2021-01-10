@@ -1,0 +1,51 @@
+.nextbutton{
+  float:right;
+}
+
+.datalist{
+  width : calc(80vw);
+  margin-left: calc(8vw);
+  border-bottom: 2px solid #efefef;
+  font-size: 12px;
+}
+
+div{
+  margin: 3px;
+  padding: 3px;
+}
+
+span{
+  margin: 1px;
+  padding: 2px;
+}
+
+img{
+  height: calc(3vw);
+  width: calc(3vw);
+}
+
+button{
+  font-size: 10px;
+}
+
+.lastactivitydata{
+  text-align: right;
+  font-size: 10px;
+}
+
+.form-data{
+  font-size: 11px;
+}
+
+.tagdata{
+  color : blue;
+}
+
+.titledata{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.errordata{
+  color:red;
+}

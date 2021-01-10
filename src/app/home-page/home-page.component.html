@@ -1,0 +1,75 @@
+<div>Stack Exchange</div>
+<form #tempForm="ngForm" class="form-data">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4">Fromdate : <input name="fromdate" type="date" id="searchParameters.fromdate" [(ngModel)]="searchParameters.fromdate"  /></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Todate : <input name="todate" type="date" [(ngModel)]="searchParameters.todate"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Order : <select name="order" [(ngModel)]="searchParameters.order" >
+                  <option></option>
+                  <option>Desc</option>
+                  <option>Asc</option>
+                 </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Sort : <select name="sort" [(ngModel)]="searchParameters.sort" >
+                  <option>activity</option>
+                  <option>votes</option>
+                  <option>creation</option>
+                  <option>relevance</option>
+            </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Q : <input name="que" type="text" [(ngModel)]="searchParameters.que" ></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">accepted : <select name="accepted" [(ngModel)]="searchParameters.accepted" >
+                  <option></option>
+                  <option>True</option>
+                  <option>False</option>
+                 </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Body : <input name="body" type="text" [(ngModel)]="searchParameters.body"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Closed : <select name="closed" [(ngModel)]="searchParameters.closed" >
+                <option></option>
+                <option>True</option>
+                <option>False</option>
+               </select></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Answers : <input name="answer" type="number" [(ngModel)]="searchParameters.answer" ></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Migrated : <select name="migrated" [(ngModel)]="searchParameters.migrated" >
+                  <option></option>
+                  <option>True</option>
+                  <option>False</option>
+                 </select></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Tagged : <input name="tagged" type="text" [(ngModel)]="searchParameters.tagged"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Title : <input name="title" type="text" [(ngModel)]="searchParameters.title"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">User : <input name="user" type="text" [(ngModel)]="searchParameters.user"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">URL : <input name="url" type="url" [(ngModel)]="searchParameters.url"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Views : <input name="views" type="number" [(ngModel)]="searchParameters.views"></div>
+      <div class="col-lg-4 col-md-4 col-sm-4">Wiki : <select name="wiki" [(ngModel)]="searchParameters.wiki" >
+                <option></option>
+                <option>True</option>
+                <option>False</option>
+              </select>
+      </div>
+    </div>
+    <div><button name="submit" (click)="getstackdata();pagecount=1">Run</button></div>
+    <div *ngIf="this.errorcount" class="errordata">No data found</div>
+  </div>
+</form>
+
+<div id="sectionId">
+  <button name="prev" *ngIf="pagecount>1" (click)="setPrevPageCount()"><PREVIOUS</button>
+  <button name="next" class="nextbutton" *ngIf="searchdata.has_more" (click)="setNextPageCount()">NEXT></button>
+<div>
+
+<div *ngFor="let item of searchdata.items" class="datalist" >
+  <div class="titledata">{{item.title}}</div>
+  <div><a href='{{item.link}}'>{{item.link}}</a></div>
+  <div class="lastactivitydata">
+    <span class="tagdata">asked</span>
+    <span>{{item.creation_date}}</span>
+    <span class="tagdata">last activity</span>
+    <span>{{item.last_activity_date}}</span>
+  </div>
+  <div class="lastactivitydata">
+    <span><img src='{{item.owner.profile_image}}'></span>
+    <span class="tagdata">{{item.owner.display_name}}</span>
+  </div>
+  <div></div>
+</div>
